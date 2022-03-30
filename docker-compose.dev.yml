@@ -1,11 +1,28 @@
 version: '3.4'
 services:
+  client:
+    container_name: client
+    depends_on:
+      - api
+    build:
+      context: ./client
+      target: build
+    volumes:
+      - ./client/src:/app/src
+    ports:
+      - 3000:3000
+    env_file:
+      - ./client/.env
+    # environment:
+    #   - VITE_APP_API=http://localhost:2727/
+    command: npm run dev
+
   api:
     container_name: server
     depends_on:
       - db
     build:
-      context: .
+      context: ./server
       target: build
     restart: always
     environment:
@@ -16,12 +33,13 @@ services:
       - DB_PASS=myPassWord
       - DB_NAME=test_db
     volumes:
-      - ./:/app
+      - ./server/:/app
       - /app/node_modules
       - /app/dist
     ports:
       - 2727:2727
     command: npm run dev
+
   db:
     container_name: mariadb
     image: mariadb:10.7

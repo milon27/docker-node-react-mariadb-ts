@@ -6,8 +6,10 @@
   "scripts": {
     "client": "cd client && npm run dev",
     "server": "cd server && npm run dev",
-    "docker_dev": "cd server && docker compose -f docker-compose.dev.yml up",
-    "docker_dev_build": "cd server && docker compose -f docker-compose.dev.yml up --build"
+    "docker_dev": "docker compose -f docker-compose.dev.yml up",
+    "docker_dev_build": "docker compose -f docker-compose.dev.yml up --build",
+    "docker_dev_prod": "docker compose up",
+    "docker_dev_prod_build": "docker compose up --build"
   },
   "keywords": [],
   "author": "milon27",

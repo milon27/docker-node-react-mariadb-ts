@@ -10,6 +10,6 @@ services:
       - 3000:3000
     env_file:
       - .env
-    environment:
-      - VITE_APP_API=localhost:2727
+    # environment:
+    #   - VITE_APP_API=http://localhost:2727
     command: npm run dev

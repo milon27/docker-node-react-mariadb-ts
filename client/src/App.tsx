@@ -10,14 +10,15 @@ function App() {
     axios.get('/').then(res => {
       setData(res.data)
     }).catch(e => {
+      console.log(e);
       setData("error" + e.message)
     })
   }, [])
   return (
     <div className="App">
-      ENV= {import.meta.env.VITE_APP_NAME}
-      ENV2= {import.meta.env.VITE_APP_API}
-      DATE FROM SERVER: {data}
+      React ENV1= {import.meta.env.VITE_APP_NAME} <br />
+      React ENV2= {import.meta.env.VITE_APP_API}<br />
+      DATE FROM SERVER: {data}<br />
       <br />
       <button type="button" onClick={() => {
         axios.get('/db').then(res => {
@@ -26,10 +27,12 @@ function App() {
           serServer("error" + e.message)
         })
       }}>
-        get data from db
+        get some other data from server
       </button>
       <br />
       data from server:{server}
+      <br />
+      {import.meta.env.VITE_APP_API}
     </div>
   )
 }

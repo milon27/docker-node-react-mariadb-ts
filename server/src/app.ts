@@ -15,11 +15,11 @@ const con = mysql.createConnection({
 });
 
 app.get('/', (req: Request, res: Response) => {
-    res.send(`okk, env= ${process.env.NODE_ENV}`)
+    res.send(`server is running on port 2727, env= ${process.env.NODE_ENV}`)
 })
 
 app.get('/db', async (req: Request, res: Response) => {
-    con.query('SELECT "name" as name;', (err, results) => {
+    con.query('SELECT "milon27" as name;', (err, results) => {
         if (err) {
             return res.send(err.message)
         }
