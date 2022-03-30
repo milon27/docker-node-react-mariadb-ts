@@ -1,0 +1,15 @@
+version: '3.4'
+services:
+  client_dev:
+    build:
+      context: .
+      target: build
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    environment:
+      - VITE_APP_API=localhost:2727
+    command: npm run dev

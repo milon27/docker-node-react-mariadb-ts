@@ -1,0 +1,35 @@
+# for the production only
+version: '3.4'
+services:
+  api:
+    container_name: server
+    depends_on:
+      - db
+    build:
+      context: .
+      target: production
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=2727
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=myPassWord
+      - DB_NAME=test_db
+    ports:
+      - 2727:2727
+  db:
+    container_name: mariadb
+    image: mariadb:10.7
+    restart: always
+    environment:
+      - MYSQL_USER=milon27
+      - MYSQL_PASSWORD=myPassWord
+      - MYSQL_ROOT_PASSWORD=myPassWord
+      - MYSQL_DATABASE=test_db
+    volumes:
+      - mysql_vol:/var/lib/mysql
+
+#volumes(root label)
+volumes:
+  mysql_vol: {}
