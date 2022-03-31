@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 
 # ------------------production -------------------
-FROM nginx:1.21.6-alpine as production
+FROM nginx:stable-alpine as production
 
 WORKDIR /usr/share/nginx/html
 

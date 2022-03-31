@@ -1,8 +1,8 @@
 # for the production only
 version: '3.4'
 services:
-  client:
-    container_name: client
+  nginx_client:
+    container_name: nginx_client
     depends_on:
       - api
     build:
@@ -10,7 +10,11 @@ services:
       target: production
     restart: always
     ports:
-      - 3000:80
+      - 3000:80 #client
+      - 2727:2727 #api
+    volumes:
+      - ./_nginx/config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
   api:
     container_name: server
     depends_on:
@@ -26,8 +30,9 @@ services:
       - DB_USER=root
       - DB_PASS=myPassWord
       - DB_NAME=test_db
-    ports:
-      - 2727:2727
+    # ports:
+    #   - 2727:2727
+
   db:
     container_name: mariadb
     image: mariadb:10.7
