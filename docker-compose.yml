@@ -18,6 +18,7 @@ services:
   client_build:
     build:
       context: ./client
+    image: milon27/vite-react
     volumes:
       - ./client/dist:/app/dist
     environment:
@@ -29,6 +30,7 @@ services:
     build:
       context: ./server
       target: production
+    image: milon27/node-mysql
     restart: always
     depends_on:
       - db
