@@ -22,7 +22,7 @@ services:
     volumes:
       - ./client/dist:/app/dist
     environment:
-      - VITE_APP_API=http://localhost:2727
+      - VITE_APP_API=http://164.92.156.138:2727
       - VITE_APP_NAME=ProductionENVClientFromDC
 
   server:
