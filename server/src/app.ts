@@ -17,7 +17,7 @@ const con = mysql.createConnection({
 });
 
 app.get('/', (req: Request, res: Response) => {
-    res.send(`server is running on port 2727, env= ${process.env.NODE_ENV}, now ${moment().toISOString()}`)
+    res.send(`🚀 server is running on port ${process.env.PORT}, env= ${process.env.NODE_ENV}, now ${moment().toISOString()}`)
 })
 
 app.get('/db', async (req: Request, res: Response) => {
