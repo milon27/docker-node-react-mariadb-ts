@@ -6,6 +6,8 @@ COPY package*.json .
 RUN npm install
 
 COPY . .
+
+USER milon27:milon27
 # RUN npm run build
 CMD [ "npm","run","build" ]
 
