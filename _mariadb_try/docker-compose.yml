@@ -14,6 +14,14 @@ services:
       - 3002:3306
     volumes:
       - mysql_vol:/var/lib/mysql
+      # - ./init-restore-db:/docker-entrypoint-initdb.d
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
 #volumes(root label)
 volumes:

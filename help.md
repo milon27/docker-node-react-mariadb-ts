@@ -8,5 +8,6 @@ docker exec -it server-api-1 sh
 
 > todo
 
-1. ssl
+1. db backup
 1. db data migrate
+1. ssl

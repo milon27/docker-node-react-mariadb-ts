@@ -4,19 +4,15 @@
 > run on developement
 
 ```bash
-npm run docker_dev
-
+npm run dev
 //or rebuild while start the docker
-npm run docker_dev_build
+npm run dev_build
 
 ```
 
 > run on production
 
 ```bash
-npm run docker_dev_prod
-
-//or rebuild while start the docker
-npm run docker_dev_prod_build
+npm run prod
 
 ```

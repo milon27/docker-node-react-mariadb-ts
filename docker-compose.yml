@@ -51,6 +51,7 @@ services:
       - MYSQL_DATABASE=my_db
     volumes:
       - mysql_vol:/var/lib/mysql
+      - ./_db_restore:/docker-entrypoint-initdb.d
 
 #volumes(root label)
 volumes:
