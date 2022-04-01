@@ -6,7 +6,8 @@
   "scripts": {
     "dev_build": "docker compose -f docker-compose.dev.yml up --build",
     "dev": "docker compose -f docker-compose.dev.yml up",
-    "prod": "docker compose up --build"
+    "prod": "docker compose up",
+    "down": "docker compose down"
   },
   "keywords": [],
   "author": "milon27",

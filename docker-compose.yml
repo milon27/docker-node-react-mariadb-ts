@@ -23,7 +23,7 @@ services:
       - ./client/dist:/app/dist
     environment:
       - VITE_APP_API=http://164.92.156.138:2727
-      - VITE_APP_NAME=ProductionENVClientFromDC
+      - VITE_APP_NAME=CICD-GACTION
 
   server:
     container_name: server
@@ -40,7 +40,7 @@ services:
       - DB_USER=milon27
       - DB_PASS=myPassWord
       - DB_NAME=my_db
-      - NODE_ENV=production
+      - NODE_ENV=production_cicd
 
   db:
     container_name: mariadb

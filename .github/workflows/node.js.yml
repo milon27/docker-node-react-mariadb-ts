@@ -1,0 +1,23 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ clean ]
+  pull_request:
+    branches: [ clean ]
+
+jobs:
+  build:
+
+    runs-on: [self-hosted, prod]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: pull the iamges & run
+    - run: docker compose pull
+    - run: docker compose up -d
