@@ -1,0 +1,10 @@
+version: '3.4'
+services:
+  client_build:
+    build:
+      context: .
+    volumes:
+      - ./dist:/app/dist
+    environment:
+      - VITE_APP_API=http://localhost:2727
+      - VITE_APP_NAME=ClientFromDC

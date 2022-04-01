@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import moment from 'moment'
 
 axios.defaults.baseURL = import.meta.env.VITE_APP_API + ''
 
@@ -18,7 +19,7 @@ function App() {
     <div className="App">
       React ENV1= {import.meta.env.VITE_APP_NAME} <br />
       React ENV2= {import.meta.env.VITE_APP_API}<br />
-      DATE FROM SERVER: {data}<br />
+      UseEffect DATA FROM SERVER: {data}<br />
       <br />
       <button type="button" onClick={() => {
         axios.get('/db').then(res => {
@@ -27,12 +28,39 @@ function App() {
           serServer("error" + e.message)
         })
       }}>
-        get some other data from server
+        create table
       </button>
       <br />
+
+      <button type="button" onClick={() => {
+        axios.get('/insert').then(res => {
+          serServer(JSON.stringify(res.data))
+        }).catch(e => {
+          serServer("error" + e.message)
+        })
+      }}>
+        insert a name
+      </button>
+      <br />
+
+      <button type="button" onClick={() => {
+        axios.get('/get').then(res => {
+          serServer(JSON.stringify(res.data))
+        }).catch(e => {
+          serServer("error" + e.message)
+        })
+      }}>
+        show all
+      </button>
+      <br />
+
+
+
       data from server:{server}
       <br />
       {import.meta.env.VITE_APP_API}
+
+      Today is: {moment().toLocaleString()}
     </div>
   )
 }

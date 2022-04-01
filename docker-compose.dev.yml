@@ -1,44 +1,40 @@
 version: '3.4'
 services:
   client:
-    container_name: client
-    depends_on:
-      - api
+    container_name: client_dev
     build:
       context: ./client
-      target: build
+      dockerfile: Dockerfile.Dev
+    restart: always
+    depends_on:
+      - server
     volumes:
       - ./client/src:/app/src
+    environment:
+      - VITE_APP_API=http://localhost:2727
+      - VITE_APP_NAME=ClientFromDC
     ports:
       - 3000:3000
-    env_file:
-      - ./client/.env
-    # environment:
-    #   - VITE_APP_API=http://localhost:2727/
-    command: npm run dev
 
-  api:
-    container_name: server
-    depends_on:
-      - db
+  server:
+    container_name: server_dev
     build:
       context: ./server
-      target: build
+      dockerfile: Dockerfile.Dev
     restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./server/src:/app/src
     environment:
-      - NODE_ENV=development
       - PORT=2727
       - DB_HOST=db
-      - DB_USER=root
+      - DB_USER=milon27
       - DB_PASS=myPassWord
-      - DB_NAME=test_db
-    volumes:
-      - ./server/:/app
-      - /app/node_modules
-      - /app/dist
+      - DB_NAME=my_db
+      - NODE_ENV=development
     ports:
       - 2727:2727
-    command: npm run dev
 
   db:
     container_name: mariadb
@@ -48,7 +44,7 @@ services:
       - MYSQL_USER=milon27
       - MYSQL_PASSWORD=myPassWord
       - MYSQL_ROOT_PASSWORD=myPassWord
-      - MYSQL_DATABASE=test_db
+      - MYSQL_DATABASE=my_db
     volumes:
       - mysql_vol:/var/lib/mysql
 
