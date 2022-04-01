@@ -1,5 +1,6 @@
 ## docker-node-react-mariadb-ts
 
+setup with github action & docker hub
 
 > run on developement
 
