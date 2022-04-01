@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Docker CI
 
 on:
   push:
@@ -10,11 +10,6 @@ jobs:
   build:
 
     runs-on: [self-hosted, prod]
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
