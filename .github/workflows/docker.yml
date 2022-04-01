@@ -10,10 +10,6 @@ jobs:
   build:
 
     runs-on: [self-hosted, prod]
-    
-    strategy:
-      matrix:
-        node-version: [16.x]
 
     steps:
     - uses: actions/checkout@v3

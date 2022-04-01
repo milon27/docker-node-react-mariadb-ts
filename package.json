@@ -7,7 +7,9 @@
     "dev_build": "docker compose -f docker-compose.dev.yml up --build",
     "dev": "docker compose -f docker-compose.dev.yml up",
     "prod": "docker compose up",
-    "down": "docker compose down"
+    "down": "docker compose down",
+    "build": "docker compose build",
+    "push": "docker compose push"
   },
   "keywords": [],
   "author": "milon27",
