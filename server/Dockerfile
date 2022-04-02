@@ -3,9 +3,9 @@ FROM node:16.13.2-alpine as build
 ENV NODE_ENV=development
 ENV PORT=2727
 
-WORKDIR /app
+WORKDIR /app/
 
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
 
 COPY . .
@@ -18,11 +18,11 @@ FROM node:16.13.2-alpine as production
 ENV NODE_ENV=production
 ENV PORT=2727
 
-WORKDIR /app
+WORKDIR /app/
 
-COPY package*.json .
+COPY package*.json ./
 RUN npm ci --only=production
 
-COPY --from=build /app/dist ./dist
+COPY --from=build /app/dist/ ./dist/
 
 CMD [ "node","dist/app.js" ]

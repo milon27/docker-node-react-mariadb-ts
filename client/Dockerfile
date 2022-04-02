@@ -4,9 +4,9 @@ FROM node:16.13.2-alpine as build
 # RUN adduser milon27 root
 # USER milon27
 
-WORKDIR /app
+WORKDIR /app/
 
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
 
 COPY . .
