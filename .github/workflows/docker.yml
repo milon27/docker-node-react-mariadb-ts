@@ -8,11 +8,27 @@ on:
 
 jobs:
   build:
-
-    runs-on: [self-hosted, prod]
-
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      name: pull the iamges & run
-    - run: docker compose pull
-    - run: docker compose up -d
+      - uses: actions/checkout@v3
+      - name: docker hub login
+        env: 
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASS: ${{secrets.DOCKER_PASS}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS 
+      - name: build the images
+        run: |
+          docker compose build
+      - name: docker hub push
+        run: |
+          docker compose push
+
+  # deploy:
+  #   runs-on: [self-hosted, prod]
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: pull the iamges & run
+  #     run: |
+  #       docker compose pull
+  #       docker compose up -d
