@@ -2,9 +2,9 @@ name: Docker CI
 
 on:
   push:
-    branches: [ clean ]
+    branches: [ ssl_backup ]
   pull_request:
-    branches: [ clean ]
+    branches: [ ssl_backup ]
 
 jobs:
   build:
