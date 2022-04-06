@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - 80:80
+    volumes:
+      # - ./public_html:/public_html
+      - ./_nginx/config/default.stage.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./_tmp_volume/dhparam/:/etc/nginx/dhparam/
+      - ./_tmp_volume/certbot/conf/:/etc/nginx/ssl/
+      - ./_tmp_volume/certbot/data:/usr/share/nginx/html/letsencrypt/
+
+# only for dns chanllenge

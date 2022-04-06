@@ -1,4 +1,0 @@
-Where are my certificates?
-```
-
-```
