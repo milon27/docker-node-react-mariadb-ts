@@ -24,9 +24,9 @@ jobs:
         run: |
           docker compose push
 
-   deploy:
-     runs-on: [self-hosted, prod]
-     steps:
-     - uses: actions/checkout@v3
-     - name: pull the iamges & run
-       run: bash init.sh # init.sh once,run.sh from next time
+  deploy:
+    runs-on: [self-hosted, prod]
+    steps:
+      - uses: actions/checkout@v3
+      - name: pull the iamges & run
+        run: bash init.sh # init.sh once,run.sh from next time
