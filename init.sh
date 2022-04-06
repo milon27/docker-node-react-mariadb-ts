@@ -4,7 +4,6 @@ GIT_PROJECT_NAME="docker-node-react-mariadb-ts"
 DOMAIN="http://m27lab.ml/"
 FULL_PATH="~/actions-runner/_work/$GIT_PROJECT_NAME/$GIT_PROJECT_NAME"
 
-mkdir -p ~/_tmp_volume/_logs
 mkdir -p ~/_tmp_volume/drive_config
 mkdir -p ~/_tmp_volume/dhparam
 
