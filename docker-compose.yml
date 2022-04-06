@@ -67,6 +67,18 @@ services:
       # - ./_tmp_volume/certbot/logs/:/var/log/letsencrypt #optional
       - ./_tmp_volume/certbot/data:/usr/share/nginx/html/letsencrypt
 
+  node_drive:
+    # should have backup.sql.gz, credentials.json, token.json these 3 files in /drive_config folder
+    container_name: node_drive
+    image: milon27/node_drive
+    environment:
+      - BACKUP_FILE_NAME=backup.sql.gz
+      - BACKUP_FILE_MIMETYPE=application/gzip
+      - DRIVE_FOLDER_ID=1jG_b_FPTU7ZafNbmLlmY-z1GLOIZqeue
+      - CREDENTIAL_FILE_NAME=credentials.json
+    volumes:
+      - ./_tmp_volume/drive_config:/app/config
+
 #volumes(root label)
 volumes:
   mysql_vol: {}

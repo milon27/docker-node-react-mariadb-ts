@@ -13,7 +13,9 @@ npm run dev_build
 
 - create _tmp_volume folder and put it in the .gitignore file
 - create docker-compose.stage.yml file
-- **create init.sh script (change the domain name there)**
+- **create init.sh script (change the domain name, git project name, host user name there)**
 - **change the domain** in _nginx/config/* files (2 config file)
 - **change API URL** from dokcer compose client_build env 
 - **change the domain** in dokcer compose certbot service
+- ___
+- change **db name** in backup.sh file and server env based on mysql/mariadb config
