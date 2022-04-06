@@ -5,11 +5,12 @@ cd "$(dirname "$0")"
 
 #run as sudo
 DB_NAME='my_db'
+DB_PASS='myPassWord'
 
 #taking the backup
 # mysqldump -u root $DB_NAME | gzip > _tmp_volume/drive_config/backup.sql.gz
 # --password=root
-docker exec mariadb /usr/bin/mysqldump -u root $DB_NAME | gzip > _tmp_volume/drive_config/backup.sql.gz
+docker exec mariadb /usr/bin/mysqldump -u root --password=$DB_PASS $DB_NAME | gzip > _tmp_volume/drive_config/backup.sql.gz
 
 # run the node app(upload into drive)
 # node index.js > log/output.txt

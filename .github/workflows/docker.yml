@@ -25,6 +25,7 @@ jobs:
           docker compose push
 
   deploy:
+    needs: build
     runs-on: [self-hosted, prod]
     steps:
       - uses: actions/checkout@v3

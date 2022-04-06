@@ -61,7 +61,7 @@ services:
   # --force-renewal or --staging
   certbot:
     image: certbot/certbot:latest
-    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --force-renewal  --agree-tos --no-eff-email --email test27@g.com -d m27lab.ml
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --force-renewal --agree-tos --no-eff-email --email test27@g.com --cert-name m27lab.ml -d m27lab.ml -d api.m27lab.ml
     volumes:
       - ./_tmp_volume/certbot/conf/:/etc/letsencrypt
       # - ./_tmp_volume/certbot/logs/:/var/log/letsencrypt #optional

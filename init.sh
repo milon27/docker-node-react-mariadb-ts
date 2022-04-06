@@ -9,7 +9,8 @@ mkdir -p ./_tmp_volume/dhparam
 
 
 # create some crontab (after testing)
-# crontab -l | { cat; echo "*/15 * * * * bash /home/$USERNAME/actions-runner/_work/$GIT_PROJECT_NAME/$GIT_PROJECT_NAME/backup.sh"; } | crontab -
+crontab -l | { cat; echo "*/15 * * * * bash /home/$USERNAME/actions-runner/_work/$GIT_PROJECT_NAME/$GIT_PROJECT_NAME/backup.sh"; } | crontab -
+crontab -l | { cat; echo "@weekly docker compose -f /home/$USERNAME/actions-runner/_work/$GIT_PROJECT_NAME/$GIT_PROJECT_NAME/docker-compose.yml run --rm certbot renew"; } | crontab -
 
 
 # generate open ssl key
