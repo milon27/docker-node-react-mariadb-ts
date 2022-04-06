@@ -14,7 +14,7 @@ docker exec mariadb /usr/bin/mysqldump -u root --password=$DB_PASS $DB_NAME | gz
 
 # run the node app(upload into drive)
 # node index.js > log/output.txt
-docker compose run --rm node_drive
+docker compose run --rm node_drive > _logs/upload.txt
 
 # run this script everyday for taking db backup.sql and upload to the drive 
 # 0 4 * * * bash /home/milon27/application/node-drive/backup.sh

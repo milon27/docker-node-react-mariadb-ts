@@ -30,4 +30,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: pull the iamges & run
-        run: bash init.sh # init.sh once,run.sh from next time
+        run: bash run.sh # init.sh once,run.sh from next time
