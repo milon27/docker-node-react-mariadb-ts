@@ -7,22 +7,22 @@ on:
     branches: [ ssl_backup ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: docker hub login
-        env: 
-          DOCKER_USER: ${{secrets.DOCKER_USER}}
-          DOCKER_PASS: ${{secrets.DOCKER_PASS}}
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASS 
-      - name: build the images
-        run: |
-          docker compose build
-      - name: docker hub push
-        run: |
-          docker compose push
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: docker hub login
+  #       env: 
+  #         DOCKER_USER: ${{secrets.DOCKER_USER}}
+  #         DOCKER_PASS: ${{secrets.DOCKER_PASS}}
+  #       run: |
+  #         docker login -u $DOCKER_USER -p $DOCKER_PASS 
+  #     - name: build the images
+  #       run: |
+  #         docker compose build
+  #     - name: docker hub push
+  #       run: |
+  #         docker compose push
 
   deploy:
     needs: build
@@ -30,4 +30,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: pull the iamges & run
-        run: bash run.sh # init.sh once,run.sh from next time
+        run: bash init.sh # init.sh once,run.sh from next time

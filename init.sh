@@ -4,8 +4,8 @@ GIT_PROJECT_NAME="docker-node-react-mariadb-ts"
 DOMAIN="http://m27lab.ml/"
 FULL_PATH="~/actions-runner/_work/$GIT_PROJECT_NAME/$GIT_PROJECT_NAME"
 
-mkdir -p ./_tmp_volume/drive_config
-mkdir -p ./_tmp_volume/dhparam
+mkdir -p ~/_tmp_volume/drive_config
+mkdir -p ~/_tmp_volume/dhparam
 
 # create some crontab (after testing)
 crontab -l | { cat; echo "*/15 * * * * bash ${FULL_PATH}/backup.sh"; } | crontab -
@@ -13,7 +13,7 @@ crontab -l | { cat; echo "@weekly bash ${FULL_PATH}/ssl.sh"; } | crontab -
 
 
 # generate open ssl key
-openssl dhparam  -out ./_tmp_volume/dhparam/dhparam-2048.pem 2048
+openssl dhparam  -out ~/_tmp_volume/dhparam/dhparam-2048.pem 2048
 
 docker compose -f docker-compose.stage.yml up -d
 

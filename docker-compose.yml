@@ -13,17 +13,17 @@ services:
     volumes:
       - ./_nginx/config/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./_nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./_tmp_volume/client:/usr/share/nginx/html # client application
-      - ./_tmp_volume/dhparam:/etc/nginx/dhparam
-      - ./_tmp_volume/certbot/conf/:/etc/nginx/ssl/
-      - ./_tmp_volume/certbot/data:/usr/share/nginx/html/letsencrypt
+      - ~/_tmp_volume/client:/usr/share/nginx/html # client application
+      - ~/_tmp_volume/dhparam:/etc/nginx/dhparam
+      - ~/_tmp_volume/certbot/conf/:/etc/nginx/ssl/
+      - ~/_tmp_volume/certbot/data:/usr/share/nginx/html/letsencrypt
 
   client_build:
     build:
       context: ./client
     image: milon27/vite-react
     volumes:
-      - ./_tmp_volume/client:/app/dist
+      - ~/_tmp_volume/client:/app/dist
     environment:
       - VITE_APP_API=https://api.m27lab.ml
       - VITE_APP_NAME=CICD-SSL-G-ACTION
@@ -63,9 +63,9 @@ services:
     image: certbot/certbot:latest
     command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --force-renewal --agree-tos --no-eff-email --email test27@g.com --cert-name m27lab.ml -d m27lab.ml -d api.m27lab.ml
     volumes:
-      - ./_tmp_volume/certbot/conf/:/etc/letsencrypt
-      # - ./_tmp_volume/certbot/logs/:/var/log/letsencrypt #optional
-      - ./_tmp_volume/certbot/data:/usr/share/nginx/html/letsencrypt
+      - ~/_tmp_volume/certbot/conf/:/etc/letsencrypt
+      # - ~/_tmp_volume/certbot/logs/:/var/log/letsencrypt #optional
+      - ~/_tmp_volume/certbot/data:/usr/share/nginx/html/letsencrypt
 
   node_drive:
     # should have backup.sql.gz, credentials.json, token.json these 3 files in /drive_config folder
@@ -77,7 +77,7 @@ services:
       - DRIVE_FOLDER_ID=1jG_b_FPTU7ZafNbmLlmY-z1GLOIZqeue
       - CREDENTIAL_FILE_NAME=credentials.json
     volumes:
-      - ./_tmp_volume/drive_config:/app/config
+      - ~/_tmp_volume/drive_config:/app/config
 
 #volumes(root label)
 volumes:
