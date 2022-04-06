@@ -11,11 +11,19 @@ npm run dev_build
 
 > run on production
 
-- create _tmp_volume folder and put it in the .gitignore file
+- all the volume will be availble in ~/_tmp_volume this folder
 - create docker-compose.stage.yml file
-- **create init.sh script (change the domain name, git project name, host user name there)**
+- **create init.sh script (change the domain name, git project name there)**
 - **change the domain** in _nginx/config/* files (2 config file)
 - **change API URL** from dokcer compose client_build env 
-- **change the domain** in dokcer compose certbot service
+- **add/change the domain** in dokcer compose certbot service
 - ___
 - change **db name** in backup.sh file and server env based on mysql/mariadb config
+- 2 crontab will be set automatically for current user check them by ``` crontab -e ```
+- update docker.yml file based on your need
+- all done.
+
+> how to use
+ - clone the repo.
+ - work on client for react app
+ - work on server for node app
