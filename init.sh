@@ -7,8 +7,8 @@ FULL_PATH="~/actions-runner/_work/$GIT_PROJECT_NAME/$GIT_PROJECT_NAME"
 mkdir -p ~/_tmp_volume/drive_config
 mkdir -p ~/_tmp_volume/dhparam
 
-# create some crontab (after testing)
-crontab -l | { cat; echo "*/15 * * * * bash ${FULL_PATH}/backup.sh"; } | crontab -
+# create some crontab (after testing) [backup everyday 4.00 am, @weekly ssl renew]
+crontab -l | { cat; echo "0 22 * * * bash ${FULL_PATH}/backup.sh"; } | crontab -
 crontab -l | { cat; echo "@weekly bash ${FULL_PATH}/ssl.sh"; } | crontab -
 
 

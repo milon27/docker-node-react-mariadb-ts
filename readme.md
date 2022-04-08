@@ -28,12 +28,12 @@ npm run dev_build
  - work on client for react app
  - work on server for node app
 
-> crontab setup (run as current/non root user)
+> crontab setup (run as current/non root user) [will be automatically added using init.sh script.]
 
 
 ```
-# db backup
-*/15 * * * * bash ~/actions-runner/_work/docker-node-react-mariadb-ts/docker-node-react-mariadb-ts/backup.sh
+# db backup everyday 4:00 am
+0 22 * * * bash ~/actions-runner/_work/docker-node-react-mariadb-ts/docker-node-react-mariadb-ts/backup.sh
 
-* * * * * docker compose run --rm -f ~/actions-runner/_work/docker-node-react-mariadb-ts/docker-node-react-mariadb-ts/docker-compose.yml certbot renew
+@weekly docker compose run --rm -f ~/actions-runner/_work/docker-node-react-mariadb-ts/docker-node-react-mariadb-ts/docker-compose.yml certbot renew
 ```
