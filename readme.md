@@ -27,3 +27,13 @@ npm run dev_build
  - clone the repo.
  - work on client for react app
  - work on server for node app
+
+> crontab setup (run as current/non root user)
+
+
+```
+# db backup
+*/15 * * * * bash ~/actions-runner/_work/docker-node-react-mariadb-ts/docker-node-react-mariadb-ts/backup.sh
+
+* * * * * docker compose run --rm -f ~/actions-runner/_work/docker-node-react-mariadb-ts/docker-node-react-mariadb-ts/docker-compose.yml certbot renew
+```
